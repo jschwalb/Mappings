@@ -5,7 +5,7 @@ import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
 import org.junit.Before;
 import org.junit.Test;
 
-public abstract class MapperTest {
+public abstract class AbstractMapperTest {
 
     private BookDTO bookDTO;
     private Book bookEntity;
