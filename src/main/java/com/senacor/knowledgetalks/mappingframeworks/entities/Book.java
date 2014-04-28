@@ -9,7 +9,7 @@ import java.util.List;
  * Created by jschwalb on 25.04.14.
  */
 @Data
-public abstract class Book {
+public class Book {
 
     private String title;
 
