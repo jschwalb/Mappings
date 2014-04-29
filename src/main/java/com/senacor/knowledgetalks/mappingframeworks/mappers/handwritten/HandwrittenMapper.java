@@ -44,6 +44,7 @@ public class HandwrittenMapper implements Mapper {
             for(String chapterTitle : bookDTO.getChapterTitles()) {
                 Chapter chapter = new Chapter();
                 chapter.setTitle(chapterTitle);
+                chapters.add(chapter);
             }
             result.setChapters(chapters);
         }
