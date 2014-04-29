@@ -2,11 +2,17 @@ package com.senacor.knowledgetalks.mappingframeworks.mappers;
 
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
-import com.senacor.knowledgetalks.mappingframeworks.entities.*;
+import com.senacor.knowledgetalks.mappingframeworks.entities.Author;
+import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
+import com.senacor.knowledgetalks.mappingframeworks.entities.Chapter;
+import com.senacor.knowledgetalks.mappingframeworks.entities.NonFictionBook;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -66,32 +72,32 @@ public abstract class AbstractMapperTest {
 
     @Test
     public void testMapBookEntity2DTO() {
-        BookDTO result = this.mapEntity2DTO(bookEntity);
+        BookDTO result = mapper.mapEntity2DTO(bookEntity);
 
         assertNotNull(result);
         assertEquals(bookEntity.getTitle(), result.getTitle());
         assertEquals(bookEntity.getPublisher(), result.getPublisher());
         assertEquals(bookEntity.getReleaseDate().getTime(), result.getReleaseDate());
 
-        if(bookEntity.getAuthor() != null) {
+        if (bookEntity.getAuthor() != null) {
             Author author = bookEntity.getAuthor();
             assertEquals(author.getFirstName(), result.getAuthorFirstName());
             assertEquals(author.getLastName(), result.getAuthorLastName());
             assertEquals(author.getBirthday(), result.getAuthorBirthday());
         }
 
-        if(bookEntity.getChapters() != null) {
+        if (bookEntity.getChapters() != null) {
             // assertNotNull(result.getChapterTitles());
             // assertEquals(bookEntity.getChapters().size(), result.getChapterTitles().size());
             //TODO: Check Content of Chapters...
         }
-    }
 
-    public abstract BookDTO mapEntity2DTO(Book bookEntity);
+        //TODO: Check content of BookDTOType - Novel or NonFiction...
+    }
 
     @Test
     public void testMapDTO2BookEntity() {
-        Book result = this.mapDTO2Entity(bookDTO);
+        Book result = mapper.mapDTO2Entity(bookDTO);
 
         assertNotNull(result);
         assertEquals(bookDTO.getTitle(), result.getTitle());
@@ -106,8 +112,8 @@ public abstract class AbstractMapperTest {
 //        assertNotNull(result.getChapters());
 //        assertEquals(bookDTO.getChapterTitles().size(), result.getChapters().size());
         //TODO: Check Content of Chapters...
-    }
 
-    public abstract Book mapDTO2Entity(BookDTO bookDTO);
+        //TODO: Check instanceof result - Novel or NonFiction...
+    }
 
 }

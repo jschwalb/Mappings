@@ -11,14 +11,4 @@ public class ModelmapperTest extends AbstractMapperTest {
         mapper = new Modelmapper();
     }
 
-    @Override
-    public BookDTO mapEntity2DTO(Book bookEntity) {
-        return mapper.mapEntity2DTO(bookEntity);
-    }
-
-    @Override
-    public Book mapDTO2Entity(BookDTO bookDTO) {
-        return mapper.mapDTO2Entity(bookDTO);
-    }
-
 }
