@@ -14,6 +14,7 @@ import static org.junit.Assert.assertNotNull;
 
 public abstract class AbstractMapperTest {
 
+    protected Mapper mapper;
     private BookDTO bookDTO;
     private Book bookEntity;
 
