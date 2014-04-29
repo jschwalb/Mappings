@@ -1,14 +1,14 @@
 package com.senacor.knowledgetalks.mappingframeworks.entities;
 
+import lombok.Data;
+
 import java.util.Date;
 
-/**
- * Created by jschwalb on 25.04.14.
- */
+@Data
 public class Author {
 
     private String firstName;
     private String lastName;
-    private Date brithday;
+    private Date birthday;
 
 }

@@ -1,8 +1,8 @@
 package com.senacor.knowledgetalks.mappingframeworks.entities;
 
-/**
- * Created by jschwalb on 25.04.14.
- */
+import lombok.Data;
+
+@Data
 public class Chapter {
 
     private String title;

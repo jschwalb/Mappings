@@ -2,12 +2,10 @@ package com.senacor.knowledgetalks.mappingframeworks.entities;
 
 import lombok.Data;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by jschwalb on 25.04.14.
- */
 @Data
 public class Book {
 
@@ -19,6 +17,6 @@ public class Book {
 
     private List<Chapter> chapters;
 
-    private Date releaseDate;
+    private Calendar releaseDate;
 
 }
