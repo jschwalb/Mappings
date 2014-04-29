@@ -5,9 +5,6 @@ import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
 import org.modelmapper.ModelMapper;
 
-/**
- * Created by jschwalb on 28.04.14.
- */
 public class Modelmapper implements Mapper {
 
     private ModelMapper modelMapper;
