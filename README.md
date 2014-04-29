@@ -11,7 +11,7 @@ Code:
     - Test-Framework (J)
     - Mappings inkl. spezif. Tests:
         - Dozer ()
-        - Handwritten ()
+        - Handwritten (J)
         - JMapper ()
         - ModelMapper (J)
         - Moo ()
