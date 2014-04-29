@@ -5,8 +5,8 @@ import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.*;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
 
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
 
 public class HandwrittenMapper implements Mapper {
@@ -14,8 +14,8 @@ public class HandwrittenMapper implements Mapper {
     @Override
     public Book mapDTO2Entity(BookDTO bookDTO) {
         Book result = null;
-        if(bookDTO.getBookType() != null) {
-            if(bookDTO.getBookType() == BookTypeDTO.NON_FICTION) {
+        if (bookDTO.getBookType() != null) {
+            if (bookDTO.getBookType() == BookTypeDTO.NON_FICTION) {
                 result = new NonFictionBook();
             } else if (bookDTO.getBookType() == BookTypeDTO.NOVEL) {
                 result = new Novel();
@@ -27,7 +27,7 @@ public class HandwrittenMapper implements Mapper {
         result.setTitle(bookDTO.getTitle());
         result.setPublisher(bookDTO.getPublisher());
 
-        if(bookDTO.getReleaseDate() != null) {
+        if (bookDTO.getReleaseDate() != null) {
             Calendar releaseDate = Calendar.getInstance();
             releaseDate.setTime(bookDTO.getReleaseDate());
             result.setReleaseDate(releaseDate);
@@ -39,9 +39,9 @@ public class HandwrittenMapper implements Mapper {
         author.setLastName(bookDTO.getAuthorLastName());
         result.setAuthor(author);
 
-        if(bookDTO.getChapterTitles() != null) {
-            List<Chapter> chapters = new LinkedList<Chapter>();
-            for(String chapterTitle : bookDTO.getChapterTitles()) {
+        if (bookDTO.getChapterTitles() != null) {
+            List<Chapter> chapters = new ArrayList<Chapter>(bookDTO.getChapterTitles().size());
+            for (String chapterTitle : bookDTO.getChapterTitles()) {
                 Chapter chapter = new Chapter();
                 chapter.setTitle(chapterTitle);
                 chapters.add(chapter);
@@ -54,7 +54,36 @@ public class HandwrittenMapper implements Mapper {
 
     @Override
     public BookDTO mapEntity2DTO(Book book) {
-        return null;
+        BookDTO bookDTO = new BookDTO();
+
+        bookDTO.setTitle(book.getTitle());
+        bookDTO.setPublisher(book.getPublisher());
+
+        if (book.getReleaseDate() != null) {
+            bookDTO.setReleaseDate(book.getReleaseDate().getTime());
+        }
+
+        if (book.getAuthor() != null) {
+            Author author = book.getAuthor();
+            bookDTO.setAuthorFirstName(author.getFirstName());
+            bookDTO.setAuthorLastName(author.getLastName());
+            bookDTO.setAuthorBirthday(author.getBirthday());
+        }
+
+        if (book.getChapters() != null) {
+            List<String> chapterTitles = new ArrayList<String>(book.getChapters().size());
+            for (Chapter chapter : book.getChapters()) {
+                chapterTitles.add(chapter.getTitle());
+            }
+        }
+
+        if (book instanceof NonFictionBook) {
+            bookDTO.setBookType(BookTypeDTO.NON_FICTION);
+        } else if (book instanceof Novel) {
+            bookDTO.setBookType(BookTypeDTO.NOVEL);
+        }
+
+        return bookDTO;
     }
 
 }

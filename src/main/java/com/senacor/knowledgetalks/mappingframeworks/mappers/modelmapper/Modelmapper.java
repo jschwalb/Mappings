@@ -20,6 +20,6 @@ public class Modelmapper implements Mapper {
 
     @Override
     public BookDTO mapEntity2DTO(Book book) {
-        return null;
+        return this.modelMapper.map(book, BookDTO.class);
     }
 }
