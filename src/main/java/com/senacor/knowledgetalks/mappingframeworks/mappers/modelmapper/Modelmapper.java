@@ -15,11 +15,17 @@ public class Modelmapper implements Mapper {
 
     @Override
     public Book mapDTO2Entity(BookDTO bookDTO) {
+        if(bookDTO == null) {
+            return null;
+        }
         return this.modelMapper.map(bookDTO, Book.class);
     }
 
     @Override
     public BookDTO mapEntity2DTO(Book book) {
+        if(book == null) {
+            return null;
+        }
         return this.modelMapper.map(book, BookDTO.class);
     }
 }
