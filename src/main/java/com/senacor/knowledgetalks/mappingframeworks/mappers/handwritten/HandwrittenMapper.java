@@ -97,4 +97,9 @@ public class HandwrittenMapper implements Mapper {
         return bookDTO;
     }
 
+    @Override
+    public String getMapperName() {
+        return "Handwritten";
+    }
+
 }

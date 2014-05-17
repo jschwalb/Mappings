@@ -28,4 +28,9 @@ public class Modelmapper implements Mapper {
         }
         return this.modelMapper.map(book, BookDTO.class);
     }
+
+    @Override
+    public String getMapperName() {
+        return "Modelmapper";
+    }
 }
