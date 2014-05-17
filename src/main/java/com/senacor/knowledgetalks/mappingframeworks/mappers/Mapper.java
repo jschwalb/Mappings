@@ -12,4 +12,6 @@ public interface Mapper {
 
     BookDTO mapEntity2DTO(Book book);
 
+    String getMapperName();
+
 }

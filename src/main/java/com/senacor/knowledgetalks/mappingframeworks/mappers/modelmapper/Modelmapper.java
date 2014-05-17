@@ -22,4 +22,9 @@ public class Modelmapper implements Mapper {
     public BookDTO mapEntity2DTO(Book book) {
         return this.modelMapper.map(book, BookDTO.class);
     }
+
+    @Override
+    public String getMapperName() {
+        return "Modelmapper";
+    }
 }
