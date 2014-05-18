@@ -75,6 +75,7 @@ public class HandwrittenMapper implements Mapper {
             for (Chapter chapter : book.getChapters()) {
                 chapterTitles.add(chapter.getTitle());
             }
+            bookDTO.setChapterTitles(chapterTitles);
         }
 
         if (book instanceof NonFictionBook) {

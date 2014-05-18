@@ -2,17 +2,11 @@ package com.senacor.knowledgetalks.mappingframeworks.mappers;
 
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
-import com.senacor.knowledgetalks.mappingframeworks.entities.Author;
-import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
-import com.senacor.knowledgetalks.mappingframeworks.entities.Chapter;
-import com.senacor.knowledgetalks.mappingframeworks.entities.NonFictionBook;
+import com.senacor.knowledgetalks.mappingframeworks.entities.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -87,12 +81,31 @@ public abstract class AbstractMapperTest {
         }
 
         if (bookEntity.getChapters() != null) {
-            // assertNotNull(result.getChapterTitles());
-            // assertEquals(bookEntity.getChapters().size(), result.getChapterTitles().size());
+             assertNotNull(result.getChapterTitles());
+            assertEquals(bookEntity.getChapters().size(), result.getChapterTitles().size());
+
+
             //TODO: Check Content of Chapters...
+            ListIterator<Chapter> chapterListIterator = bookEntity.getChapters().listIterator();
+            ListIterator<String> stringListIterator = result.getChapterTitles().listIterator();
+
+            while(chapterListIterator.hasNext() && stringListIterator.hasNext()){
+                Chapter chapter = chapterListIterator.next();
+                String string = stringListIterator.next();
+                assertEquals(chapter.getTitle(), string);
+
+            }
+
+
         }
 
-        //TODO: Check content of BookDTOType - Novel or NonFiction...
+        //TODO: Check BookType
+        if (bookEntity.getClass() == Novel.class) {
+            assertEquals(BookTypeDTO.NOVEL, result.getBookType());
+        }
+        if (bookEntity.getClass() == NonFictionBook.class) {
+            assertEquals(BookTypeDTO.NON_FICTION, result.getBookType());
+        }
     }
 
     @Test
@@ -109,11 +122,29 @@ public abstract class AbstractMapperTest {
         assertEquals(bookDTO.getAuthorLastName(), result.getAuthor().getLastName());
         assertEquals(bookDTO.getAuthorBirthday(), result.getAuthor().getBirthday());
 
-//        assertNotNull(result.getChapters());
-//        assertEquals(bookDTO.getChapterTitles().size(), result.getChapters().size());
+        assertNotNull(result.getChapters());
+        assertEquals(bookDTO.getChapterTitles().size(), result.getChapters().size());
         //TODO: Check Content of Chapters...
+        ListIterator<Chapter> chapterListIterator =  result.getChapters().listIterator();
+        ListIterator<String> stringListIterator =bookDTO.getChapterTitles().listIterator();
+        while(chapterListIterator.hasNext() && stringListIterator.hasNext()){
+            Chapter chapter = chapterListIterator.next();
+            String string = stringListIterator.next();
+            assertEquals(chapter.getTitle(), string);
 
+        }
         //TODO: Check instanceof result - Novel or NonFiction...
+
+        if (bookDTO.getBookType() == BookTypeDTO.NON_FICTION) {
+            assertEquals(NonFictionBook.class, result.getClass());
+            //assertTrue(result instanceof NonFictionBook);
+        }
+
+        if (bookDTO.getBookType() == BookTypeDTO.NOVEL) {
+            assertEquals(Novel.class,result.getClass());
+            //assertTrue(result instanceof Novel);
+        }
+
     }
 
 }

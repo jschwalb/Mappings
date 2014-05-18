@@ -1,0 +1,65 @@
+package com.senacor.knowledgetalks.mappingframeworks.mappers.orika;
+
+import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
+import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
+import com.senacor.knowledgetalks.mappingframeworks.entities.Chapter;
+import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
+import ma.glasnost.orika.*;
+import ma.glasnost.orika.converter.ConverterFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.metadata.*;
+import ma.glasnost.orika.unenhance.UnenhanceStrategy;
+
+import java.util.Set;
+
+/**
+ * Created by phuebl on 17.05.14.
+ */
+public class OrikaMapper implements Mapper {
+
+    BoundMapperFacade<BookDTO, Book> mapperDTO2Entity;
+
+    BoundMapperFacade<Book, BookDTO> mapperEntity2DTO;
+
+    public OrikaMapper(){
+        initialize();
+    }
+
+
+    @Override
+    public Book mapDTO2Entity(BookDTO bookDTO) {
+        return mapperDTO2Entity.map(bookDTO);
+    }
+
+    @Override
+    public BookDTO mapEntity2DTO(Book book) {
+        return mapperEntity2DTO.map(book);
+    }
+
+    @Override
+    public String getMapperName() {
+        return "Orika";
+    }
+
+
+
+    public  void initialize(){
+
+        MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+
+        mapperFactory.classMap(Chapter.class, String.class)
+                .field("title","chapter")  ;
+
+        mapperFactory.classMap(Book.class, BookDTO.class)
+                .field("title", "title")
+                .field("author.firstName", "authorFirstName")
+                .field("author.lastName", "authorLastName")
+                .field("author.birthday", "authorBirthday")
+                .field("publisher", "publisher")
+                .field("releaseDate","releaseDate")
+                .field("chapters", "chapterTitles")
+                .register();
+
+        mapperEntity2DTO = mapperFactory.getMapperFacade(Book.class, BookDTO.class);
+    }
+}
