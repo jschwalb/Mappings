@@ -5,6 +5,9 @@ import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
 import org.modelmapper.ModelMapper;
 
+/**
+ * Modelmapper Realization of the Mapper.
+ */
 public class Modelmapper implements Mapper {
 
     private ModelMapper modelMapper;
@@ -15,11 +18,17 @@ public class Modelmapper implements Mapper {
 
     @Override
     public Book mapDTO2Entity(BookDTO bookDTO) {
+        if(bookDTO == null) {
+            return null;
+        }
         return this.modelMapper.map(bookDTO, Book.class);
     }
 
     @Override
     public BookDTO mapEntity2DTO(Book book) {
+        if(book == null) {
+            return null;
+        }
         return this.modelMapper.map(book, BookDTO.class);
     }
 

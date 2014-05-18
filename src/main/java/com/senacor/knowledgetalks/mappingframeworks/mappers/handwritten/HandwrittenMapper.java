@@ -4,6 +4,7 @@ import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.*;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,6 +14,10 @@ public class HandwrittenMapper implements Mapper {
 
     @Override
     public Book mapDTO2Entity(BookDTO bookDTO) {
+        if (bookDTO == null) {
+            return null;
+        }
+
         Book result = null;
         if (bookDTO.getBookType() != null) {
             if (bookDTO.getBookType() == BookTypeDTO.NON_FICTION) {
@@ -33,11 +38,13 @@ public class HandwrittenMapper implements Mapper {
             result.setReleaseDate(releaseDate);
         }
 
-        Author author = new Author();
-        author.setBirthday(bookDTO.getAuthorBirthday());
-        author.setFirstName(bookDTO.getAuthorFirstName());
-        author.setLastName(bookDTO.getAuthorLastName());
-        result.setAuthor(author);
+        if (bookDTO.getAuthorBirthday() != null || StringUtils.isNotBlank(bookDTO.getAuthorFirstName()) || StringUtils.isNoneBlank(bookDTO.getAuthorLastName())) {
+            Author author = new Author();
+            author.setBirthday(bookDTO.getAuthorBirthday());
+            author.setFirstName(bookDTO.getAuthorFirstName());
+            author.setLastName(bookDTO.getAuthorLastName());
+            result.setAuthor(author);
+        }
 
         if (bookDTO.getChapterTitles() != null) {
             List<Chapter> chapters = new ArrayList<Chapter>(bookDTO.getChapterTitles().size());
@@ -54,6 +61,10 @@ public class HandwrittenMapper implements Mapper {
 
     @Override
     public BookDTO mapEntity2DTO(Book book) {
+        if (book == null) {
+            return null;
+        }
+
         BookDTO bookDTO = new BookDTO();
 
         bookDTO.setTitle(book.getTitle());
