@@ -4,13 +4,9 @@ import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
 import com.senacor.knowledgetalks.mappingframeworks.entities.Chapter;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
-import ma.glasnost.orika.*;
-import ma.glasnost.orika.converter.ConverterFactory;
+import ma.glasnost.orika.BoundMapperFacade;
+import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import ma.glasnost.orika.metadata.*;
-import ma.glasnost.orika.unenhance.UnenhanceStrategy;
-
-import java.util.Set;
 
 /**
  * Created by phuebl on 17.05.14.
@@ -21,7 +17,7 @@ public class OrikaMapper implements Mapper {
 
     BoundMapperFacade<Book, BookDTO> mapperEntity2DTO;
 
-    public OrikaMapper(){
+    public OrikaMapper() {
         initialize();
     }
 
@@ -42,22 +38,19 @@ public class OrikaMapper implements Mapper {
     }
 
 
-
-    public  void initialize(){
+    public void initialize() {
 
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-        mapperFactory.classMap(Chapter.class, String.class)
-                .field("title","chapter")  ;
-
         mapperFactory.classMap(Book.class, BookDTO.class)
-                .field("title", "title")
+//                .field("title", "title")
                 .field("author.firstName", "authorFirstName")
                 .field("author.lastName", "authorLastName")
                 .field("author.birthday", "authorBirthday")
-                .field("publisher", "publisher")
-                .field("releaseDate","releaseDate")
-                .field("chapters", "chapterTitles")
+//                .field("publisher", "publisher")
+//                .field("releaseDate", "releaseDate")
+                .field("chapters{title}", "chapterTitles{}")
+                .byDefault()
                 .register();
 
         mapperEntity2DTO = mapperFactory.getMapperFacade(Book.class, BookDTO.class);

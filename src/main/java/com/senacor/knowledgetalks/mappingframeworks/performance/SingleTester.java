@@ -69,7 +69,7 @@ public class SingleTester {
             avgToBookEntity = avgToBookEntity/mappingDTOToBookEntityTime.size();
 
 
-            System.out.println(mapper.getMapperName()+":\t Mapping DTO 2 Entity:"+ avgToBookEntity+" Mapping Entity 2 DTO: "+avgToBookDTO);
+            System.out.println(mapper.getMapperName()+":\t Mapping DTO 2 E:"+ avgToBookEntity+" Mapping E 2 DTO: "+avgToBookDTO);
         }
 
 
