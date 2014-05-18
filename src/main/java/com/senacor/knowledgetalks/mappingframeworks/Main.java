@@ -5,7 +5,9 @@ import com.senacor.knowledgetalks.mappingframeworks.entities.Novel;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.handwritten.HandwrittenMapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.modelmapper.Modelmapper;
+import com.senacor.knowledgetalks.mappingframeworks.mappers.orika.OrikaMapper;
 import com.senacor.knowledgetalks.mappingframeworks.performance.SingleTester;
+import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,10 +34,13 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+
         long startTimeGen = System.nanoTime();
         List<Mapper>  mapper = new LinkedList<Mapper>();
         mapper.add(new Modelmapper());
         mapper.add(new HandwrittenMapper());
+        mapper.add(new OrikaMapper());
 
         SingleTester tester = new SingleTester(mapper, 10000) ;
         long endTimeGen = System.nanoTime();
