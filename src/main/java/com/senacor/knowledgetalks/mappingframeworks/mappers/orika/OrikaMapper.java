@@ -39,7 +39,7 @@ public class OrikaMapper implements Mapper {
 
     @Override
     public String getMapperName() {
-        return "Orika";
+        return "Orika Mapper";
     }
 
 

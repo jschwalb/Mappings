@@ -1,5 +1,6 @@
 package com.senacor.knowledgetalks.mappingframeworks.performance;
 
+import com.senacor.knowledgetalks.mappingframeworks.dtos.BookCoverEnum;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.*;
@@ -22,6 +23,13 @@ public class BookGenerator {
             book = new NonFictionBook();
         } else {
             book = new Novel();
+        }
+
+        boolean bookCover = RANDOM.nextBoolean();
+        if (bookCover) {
+            book.setBookCover(BookCover.HARD_COVER);
+        } else {
+            book.setBookCover(BookCover.PAPER_BACK);
         }
 
 
@@ -52,6 +60,13 @@ public class BookGenerator {
             bookDTO.setBookType(BookTypeDTO.NON_FICTION);
         } else {
             bookDTO.setBookType(BookTypeDTO.NOVEL);
+        }
+
+        boolean bookCover = RANDOM.nextBoolean();
+        if (bookCover) {
+            bookDTO.setBookCover(BookCoverEnum.HARD_COVER);
+        } else {
+            bookDTO.setBookCover(BookCoverEnum.PAPER_BACK);
         }
 
         bookDTO.setTitle(RANDOM_STRING_UTILS.random(30));

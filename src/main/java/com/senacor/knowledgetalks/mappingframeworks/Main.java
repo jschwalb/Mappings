@@ -47,10 +47,13 @@ public class Main {
         System.out.println("GenerationTime: " + (endTimeGen - startTimeGen));
 
         long startTime = System.nanoTime();
-        tester.startTest();
+        List<String> resultReport = tester.startTest();
         long endTime = System.nanoTime();
 
         System.out.println("TestTime: " + (endTime - startTime));
+        for(String report :resultReport){
+            System.out.println(report);
+        }
     }
 
 

@@ -3,9 +3,11 @@ package com.senacor.knowledgetalks.mappingframeworks.performance;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
-import org.apache.commons.collections.CollectionUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by phuebl on 30.04.14.
@@ -36,8 +38,9 @@ public class SingleTester {
     }
 
 
-    public void startTest() {
+    public List<String> startTest() {
 
+        List<String> resultReport = new ArrayList<String>();
         for (Mapper mapper : this.mapper) {
             List<Long> mappingEntityToBookDTOTime = new ArrayList<Long>();
             List<Long> mappingDTOToBookEntityTime = new ArrayList<Long>();
@@ -69,10 +72,10 @@ public class SingleTester {
             avgToBookEntity = avgToBookEntity/mappingDTOToBookEntityTime.size();
 
 
-            System.out.println(mapper.getMapperName()+":\t Mapping DTO 2 E:"+ avgToBookEntity+" Mapping E 2 DTO: "+avgToBookDTO);
+            resultReport.add( mapper.getMapperName()+":\t Mapping DTO_2_E:\t"+ avgToBookEntity+" ns \tMapping E_2_DTO:\t"+avgToBookDTO+" ns");
         }
 
-
+        return resultReport;
     }
 
 
