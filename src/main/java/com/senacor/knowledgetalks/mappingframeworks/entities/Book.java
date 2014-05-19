@@ -3,7 +3,6 @@ package com.senacor.knowledgetalks.mappingframeworks.entities;
 import lombok.Data;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -18,5 +17,7 @@ public class Book {
     private List<Chapter> chapters;
 
     private Calendar releaseDate;
+
+    private BookBound bookBound;
 
 }

@@ -1,5 +1,6 @@
 package com.senacor.knowledgetalks.mappingframeworks.mappers;
 
+import com.senacor.knowledgetalks.mappingframeworks.dtos.BookBoundEnum;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.*;
@@ -38,6 +39,8 @@ public abstract class AbstractMapperTest {
 
         result.setChapterTitles(Arrays.asList("Kapitel 1", "Kapitel 2", "Kapitel 3"));
 
+        result.setBookBound(BookBoundEnum.HARD_COVER);
+
         return result;
     }
 
@@ -59,6 +62,8 @@ public abstract class AbstractMapperTest {
         chapter2.setTitle("Two");
         List<Chapter> chapterList = Arrays.asList(chapter1, chapter2);
         result.setChapters(chapterList);
+
+        result.setBookBound(BookBound.PAPER_BACK);
 
         return result;
     }
@@ -106,6 +111,9 @@ public abstract class AbstractMapperTest {
         if (bookEntity.getClass() == NonFictionBook.class) {
             assertEquals(BookTypeDTO.NON_FICTION, result.getBookType());
         }
+
+        //Check BoundType
+        assertEquals(BookBoundEnum.PAPER_BACK, result.getBookBound());
     }
 
     @Test
@@ -144,7 +152,12 @@ public abstract class AbstractMapperTest {
             assertEquals(Novel.class,result.getClass());
             //assertTrue(result instanceof Novel);
         }
-
+        if(BookBoundEnum.HARD_COVER == bookDTO.getBookBound()) {
+            assertEquals(BookBound.HARD_COVER, result.getBookBound());
+        }
+        if(BookBoundEnum.PAPER_BACK == bookDTO.getBookBound()){
+            assertEquals(BookBound.PAPER_BACK, result.getBookBound());
+        }
     }
 
     @Test

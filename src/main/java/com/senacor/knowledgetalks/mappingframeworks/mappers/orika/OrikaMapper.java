@@ -82,7 +82,7 @@ public class OrikaMapper implements Mapper {
 
         @Override
         public Book create(Object source, MappingContext mappingContext) {
-            if (source instanceof BookDTO) {
+            if (source.getClass() ==  BookDTO.class) {
                 BookDTO dto = (BookDTO) source;
                 switch (dto.getBookType()) {
                     case NOVEL:

@@ -89,9 +89,9 @@ public class HandwrittenMapper implements Mapper {
             bookDTO.setChapterTitles(chapterTitles);
         }
 
-        if (book instanceof NonFictionBook) {
+        if (book.getClass() ==  NonFictionBook.class) {
             bookDTO.setBookType(BookTypeDTO.NON_FICTION);
-        } else if (book instanceof Novel) {
+        } else if (book.getClass() ==  Novel.class) {
             bookDTO.setBookType(BookTypeDTO.NOVEL);
         }
 

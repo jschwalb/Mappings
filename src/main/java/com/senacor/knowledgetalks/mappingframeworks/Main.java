@@ -7,7 +7,6 @@ import com.senacor.knowledgetalks.mappingframeworks.mappers.handwritten.Handwrit
 import com.senacor.knowledgetalks.mappingframeworks.mappers.modelmapper.Modelmapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.orika.OrikaMapper;
 import com.senacor.knowledgetalks.mappingframeworks.performance.SingleTester;
-import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class Main {
         mapper.add(new HandwrittenMapper());
         mapper.add(new OrikaMapper());
 
-        SingleTester tester = new SingleTester(mapper, 10000) ;
+        SingleTester tester = new SingleTester(mapper, 100000) ;
         long endTimeGen = System.nanoTime();
 
         System.out.println("GenerationTime: " + (endTimeGen - startTimeGen));
