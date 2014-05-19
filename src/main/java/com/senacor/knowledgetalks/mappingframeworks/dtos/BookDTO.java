@@ -27,6 +27,6 @@ public class BookDTO {
 
     private List<String> chapterTitles;
 
-    private BookBoundEnum bookBound;
+    private BookCoverEnum bookCover;
 
 }

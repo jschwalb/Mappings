@@ -1,5 +1,6 @@
 package com.senacor.knowledgetalks.mappingframeworks.mappers.handwritten;
 
+import com.senacor.knowledgetalks.mappingframeworks.dtos.BookCoverEnum;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO;
 import com.senacor.knowledgetalks.mappingframeworks.dtos.BookTypeDTO;
 import com.senacor.knowledgetalks.mappingframeworks.entities.*;
@@ -56,6 +57,13 @@ public class HandwrittenMapper implements Mapper {
             result.setChapters(chapters);
         }
 
+        switch (bookDTO.getBookCover()){
+            case HARD_COVER: result.setBookCover(BookCover.HARD_COVER);
+                break;
+            case PAPER_BACK: result.setBookCover(BookCover.PAPER_BACK);
+                break;
+        }
+
         return result;
     }
 
@@ -93,6 +101,13 @@ public class HandwrittenMapper implements Mapper {
             bookDTO.setBookType(BookTypeDTO.NON_FICTION);
         } else if (book.getClass() ==  Novel.class) {
             bookDTO.setBookType(BookTypeDTO.NOVEL);
+        }
+
+        switch (book.getBookCover()){
+            case HARD_COVER: bookDTO.setBookCover(BookCoverEnum.HARD_COVER);
+                break;
+            case PAPER_BACK: bookDTO.setBookCover(BookCoverEnum.PAPER_BACK);
+                break;
         }
 
         return bookDTO;

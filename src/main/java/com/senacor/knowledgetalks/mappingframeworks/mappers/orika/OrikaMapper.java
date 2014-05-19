@@ -56,6 +56,7 @@ public class OrikaMapper implements Mapper {
 //                .field("publisher", "publisher")
 //                .field("releaseDate", "releaseDate")
                 .field("chapters{title}", "chapterTitles{}")
+//                .field("bookCover", "bookCover")
                 .byDefault()
                 .register();
 

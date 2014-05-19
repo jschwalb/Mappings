@@ -1,6 +1,6 @@
 package com.senacor.knowledgetalks.mappingframeworks.entities;
 
 
-public enum BookBound {
+public enum BookCover {
     HARD_COVER, PAPER_BACK;
 }

@@ -18,6 +18,6 @@ public class Book {
 
     private Calendar releaseDate;
 
-    private BookBound bookBound;
+    private BookCover bookCover;
 
 }
