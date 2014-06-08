@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>dd/MM/yyyy HH:mm</date-format>
+        <wildcard>true</wildcard>
+        
+        <custom-converters>
+            <converter type="com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.ChapterConverter" >
+                <class-a>com.senacor.knowledgetalks.mappingframeworks.entities.Chapter</class-a>
+                <class-b>java.lang.String</class-b>
+            </converter>
+        </custom-converters>
+    </configuration>
+
+    <mapping map-null="false">
+        <class-a bean-factory="com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.CustomDozerBookDTO2BookBeanFactory">com.senacor.knowledgetalks.mappingframeworks.entities.Book</class-a>
+        <class-b bean-factory=
+                         "com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.CustomDozerBook2BookDTOBeanFactory">
+            com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO</class-b>
+        <field>
+            <a>title</a>
+            <b>title</b>
+        </field>
+
+        <field>
+            <a>Author.firstName</a>
+            <b>authorFirstName</b>
+        </field>
+        <field>
+            <a>Author.lastName</a>
+            <b>authorLastName</b>
+        </field>
+
+        <field>
+            <a>Author.birthday</a>
+            <b>authorBirthday</b>
+        </field>
+
+        <field>
+            <a>publisher</a>
+            <b>publisher</b>
+        </field>
+
+
+        <field>
+            <a>releaseDate</a>
+            <b>releaseDate</b>
+        </field>
+
+
+        <field>
+            <a>bookCover</a>
+            <b>bookCover</b>
+        </field>
+        <field >
+            <a>Author.birthday</a>
+            <b>authorBirthday</b>
+        </field>
+        <field>
+            <a>Author.birthday</a>
+            <b>authorBirthday</b>
+        </field>
+
+        <field>
+            <a>chapters</a>
+            <b>chaptertitles</b>
+
+
+        </field>
+
+
+
+    </mapping>
+
+    <mapping>
+        <class-a>com.senacor.knowledgetalks.mappingframeworks.entities.NonFictionBook</class-a>
+        <class-b bean-factory=
+                         "com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.CustomDozerBook2BookDTOBeanFactory">
+            com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO</class-b>
+    </mapping>
+
+    <mapping>
+        <class-a>com.senacor.knowledgetalks.mappingframeworks.entities.Novel</class-a>
+        <class-b bean-factory=
+                         "com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.CustomDozerBook2BookDTOBeanFactory">
+            com.senacor.knowledgetalks.mappingframeworks.dtos.BookDTO</class-b>
+    </mapping>
+
+    <mapping map-null="true">
+        <class-a>com.senacor.knowledgetalks.mappingframeworks.entities.Chapter</class-a>
+        <class-b>java.lang.String</class-b>
+        
+        <field>
+            <a>title</a>
+            <b>this</b>
+        </field>
+    </mapping>
+   
+
+</mappings>

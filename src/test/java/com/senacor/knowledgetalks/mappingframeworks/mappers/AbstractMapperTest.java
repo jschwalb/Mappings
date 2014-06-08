@@ -90,7 +90,7 @@ public abstract class AbstractMapperTest {
             assertEquals(bookEntity.getChapters().size(), result.getChapterTitles().size());
 
 
-            //TODO: Check Content of Chapters...
+            //Check Content of Chapters...
             ListIterator<Chapter> chapterListIterator = bookEntity.getChapters().listIterator();
             ListIterator<String> stringListIterator = result.getChapterTitles().listIterator();
 
