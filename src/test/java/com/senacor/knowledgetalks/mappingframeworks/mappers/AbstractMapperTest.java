@@ -165,6 +165,8 @@ public abstract class AbstractMapperTest {
         assertNull(mapper.mapDTO2Entity(null));
     }
 
+
+
     @Test
     public void testMapNull2BookDTO() {
         assertNull(mapper.mapEntity2DTO(null));

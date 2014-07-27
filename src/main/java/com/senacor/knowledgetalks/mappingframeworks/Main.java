@@ -3,6 +3,7 @@ package com.senacor.knowledgetalks.mappingframeworks;
 import com.senacor.knowledgetalks.mappingframeworks.entities.NonFictionBook;
 import com.senacor.knowledgetalks.mappingframeworks.entities.Novel;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
+import com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.DozerMapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.handwritten.HandwrittenMapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.modelmapper.Modelmapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.orika.OrikaMapper;
@@ -40,6 +41,7 @@ public class Main {
         mapper.add(new Modelmapper());
         mapper.add(new HandwrittenMapper());
         mapper.add(new OrikaMapper());
+        mapper.add(new DozerMapper());
 
         SingleTester tester = new SingleTester(mapper, 100000) ;
         long endTimeGen = System.nanoTime();

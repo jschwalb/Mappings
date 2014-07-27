@@ -21,11 +21,18 @@ public class HandwrittenMapper implements Mapper {
 
         Book result = null;
         if (bookDTO.getBookType() != null) {
-            if (bookDTO.getBookType() == BookTypeDTO.NON_FICTION) {
-                result = new NonFictionBook();
-            } else if (bookDTO.getBookType() == BookTypeDTO.NOVEL) {
-                result = new Novel();
+            switch (bookDTO.getBookType()){
+                case NON_FICTION :
+                    result = new NonFictionBook();
+                    break;
+                case NOVEL :
+                    result = new Novel();
+                    break;
+                default:
+                    result = new Book();
+                    break;
             }
+
         } else {
             result = new Book();
         }
