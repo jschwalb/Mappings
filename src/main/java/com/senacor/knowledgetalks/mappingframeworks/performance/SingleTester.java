@@ -73,6 +73,7 @@ public class SingleTester {
 
 
             resultReport.add( mapper.getMapperName()+":\t Mapping DTO_2_E:\t"+ avgToBookEntity+" ns \tMapping E_2_DTO:\t"+avgToBookDTO+" ns");
+            System.gc();
         }
 
         return resultReport;

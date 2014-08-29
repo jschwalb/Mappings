@@ -39,13 +39,13 @@ public class Main {
 
         long startTimeGen = System.nanoTime();
         List<Mapper>  mapper = new LinkedList<Mapper>();
-        mapper.add(new Modelmapper());
         mapper.add(new HandwrittenMapper());
         mapper.add(new OrikaMapper());
+        mapper.add(new Modelmapper());
         mapper.add(new DozerMapper());
         mapper.add(new JMapperImpl());
 
-        SingleTester tester = new SingleTester(mapper, 100000) ;
+        SingleTester tester = new SingleTester(mapper, 1000) ;
         long endTimeGen = System.nanoTime();
 
         System.out.println("GenerationTime: " + (endTimeGen - startTimeGen));
