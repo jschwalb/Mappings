@@ -29,7 +29,9 @@ public abstract class AbstractMapperTest {
     private BookDTO initializeDTO() {
         BookDTO result = new BookDTO();
         result.setTitle("Buddenbrooks");
-        result.setReleaseDate(new Date());
+        Date releaseDate = new Date();
+        releaseDate.setTime(123456l);
+        result.setReleaseDate(releaseDate);
         result.setPublisher("Fischer");
         result.setBookType(BookTypeDTO.NOVEL);
 

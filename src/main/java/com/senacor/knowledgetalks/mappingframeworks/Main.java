@@ -5,6 +5,7 @@ import com.senacor.knowledgetalks.mappingframeworks.entities.Novel;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.Mapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.dozer.DozerMapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.handwritten.HandwrittenMapper;
+import com.senacor.knowledgetalks.mappingframeworks.mappers.jmapper.JMapperImpl;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.modelmapper.Modelmapper;
 import com.senacor.knowledgetalks.mappingframeworks.mappers.orika.OrikaMapper;
 import com.senacor.knowledgetalks.mappingframeworks.performance.SingleTester;
@@ -42,6 +43,7 @@ public class Main {
         mapper.add(new HandwrittenMapper());
         mapper.add(new OrikaMapper());
         mapper.add(new DozerMapper());
+        mapper.add(new JMapperImpl());
 
         SingleTester tester = new SingleTester(mapper, 100000) ;
         long endTimeGen = System.nanoTime();

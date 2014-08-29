@@ -10,12 +10,8 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.12.6</version>
-        </dependency>
 
+        <!-- DOZER -->
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
@@ -27,31 +23,54 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- JMAPPER -->
         <dependency>
             <groupId>com.googlecode.jmapper-framework</groupId>
             <artifactId>jmapper-core</artifactId>
             <version>1.2.0</version>
         </dependency>
+
+        <!-- MODELMAPPER -->
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>0.6.5</version>
         </dependency>
+
+        <!-- MOO -->
         <dependency>
             <groupId>com.codiform</groupId>
             <artifactId>moo-core</artifactId>
             <version>2.0</version>
         </dependency>
-        <!-- TODO: Omapper -->
+
+        <!-- OMapper -->
+        <!--dependency>
+            <groupId>org.omapper</groupId>
+            <artifactId>omapper</artifactId>
+            <version>2.0</version>
+            <type>system</type>
+            <systemPath>/Users/jschwalb/Downloads/OMapper 2.0 Final.jar</systemPath>
+        </dependency-->
+
+        <!-- ORIKA -->
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
             <version>1.4.5</version>
         </dependency>
+
+        <!-- Standard Dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.6</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
