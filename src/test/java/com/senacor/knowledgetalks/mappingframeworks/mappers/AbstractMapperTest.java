@@ -88,7 +88,7 @@ public abstract class AbstractMapperTest {
         }
 
         if (bookEntity.getChapters() != null) {
-             assertNotNull(result.getChapterTitles());
+            assertNotNull(result.getChapterTitles());
             assertEquals(bookEntity.getChapters().size(), result.getChapterTitles().size());
 
 
