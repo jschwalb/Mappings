@@ -1,5 +1,7 @@
 package com.senacor.knowledgetalks.mappingframeworks.dtos;
 
+import com.codiform.moo.annotation.Ignore;
+import com.codiform.moo.annotation.Property;
 import com.googlecode.jmapper.annotations.JMap;
 import com.googlecode.jmapper.annotations.JMapConversion;
 import com.senacor.knowledgetalks.mappingframeworks.entities.Author;
@@ -7,6 +9,8 @@ import com.senacor.knowledgetalks.mappingframeworks.entities.Book;
 import com.senacor.knowledgetalks.mappingframeworks.entities.BookCover;
 import com.senacor.knowledgetalks.mappingframeworks.entities.Chapter;
 import lombok.Data;
+import org.omapper.annotations.Mappable;
+import org.omapper.annotations.Source;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,21 +21,27 @@ import java.util.List;
  * Created by jschwalb on 25.04.14.
  */
 @Data
+@Mappable
 public class BookDTO {
 
     @JMap(classes = {Book.class})
+    @Source(type = Book.class, property = "title")
     private String title;
 
     @JMap(value = "firstName", classes = {Author.class})
+    @Property(source = "mvel:author.firstName")
     private String authorFirstName;
 
     @JMap(value = "lastName", classes = {Author.class})
+    @Property(source = "mvel:author.lastName")
     private String authorLastName;
 
     @JMap(value = "birthday", classes = {Author.class})
+    @Property(source = "mvel:author.birthday")
     private Date authorBirthday;
 
     @JMap(classes = {Book.class})
+    @Ignore
     private Date releaseDate;
 
     @JMap(classes = {Book.class})
@@ -42,6 +52,7 @@ public class BookDTO {
     private List<String> chapterTitles;
 
     @JMap(classes = {Book.class})
+    @Property(source = "mvel:BookCover.valueOf(this.bookCover.name())")
     private BookCoverEnum bookCover;
 
     @JMapConversion(from={"releaseDate"}, to={"releaseDate"})

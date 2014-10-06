@@ -44,15 +44,20 @@
             <artifactId>moo-core</artifactId>
             <version>2.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.codiform</groupId>
+            <artifactId>moo-mvel</artifactId>
+            <version>2.0</version>
+        </dependency>
 
         <!-- OMapper -->
-        <!--dependency>
+        <dependency>
             <groupId>org.omapper</groupId>
             <artifactId>omapper</artifactId>
             <version>2.0</version>
-            <type>system</type>
+            <scope>system</scope>
             <systemPath>/Users/jschwalb/Downloads/OMapper 2.0 Final.jar</systemPath>
-        </dependency-->
+        </dependency>
 
         <!-- ORIKA -->
         <dependency>

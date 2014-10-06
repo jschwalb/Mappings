@@ -20,7 +20,9 @@ public class JMapperImpl implements Mapper {
         JMapper<Author, BookDTO> authorJMapper = new JMapper<Author, BookDTO>(Author.class, BookDTO.class);
         Author author = authorJMapper.getDestination(bookDTO);
 
-        book.setAuthor(author);
+        if(book != null) {
+            book.setAuthor(author);
+        }
 
         System.out.println(book);
         return book;
