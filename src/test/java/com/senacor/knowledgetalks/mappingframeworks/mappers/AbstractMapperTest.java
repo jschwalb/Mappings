@@ -72,7 +72,6 @@ public abstract class AbstractMapperTest {
     }
 
     @Test
-    @Ignore
     public void testMapBookEntity2DTO() {
         BookDTO result = mapper.mapEntity2DTO(bookEntity);
 

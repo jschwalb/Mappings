@@ -24,13 +24,6 @@
             </exclusions>
         </dependency>
 
-        <!-- JMAPPER -->
-        <dependency>
-            <groupId>com.googlecode.jmapper-framework</groupId>
-            <artifactId>jmapper-core</artifactId>
-            <version>1.2.0</version>
-        </dependency>
-
         <!-- MODELMAPPER -->
         <dependency>
             <groupId>org.modelmapper</groupId>
