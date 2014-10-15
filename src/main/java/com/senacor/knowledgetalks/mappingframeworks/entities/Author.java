@@ -1,6 +1,5 @@
 package com.senacor.knowledgetalks.mappingframeworks.entities;
 
-import com.codiform.moo.annotation.Property;
 import lombok.Data;
 
 import java.util.Date;

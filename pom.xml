@@ -35,28 +35,7 @@
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>0.6.5</version>
-        </dependency>
-
-        <!-- MOO -->
-        <dependency>
-            <groupId>com.codiform</groupId>
-            <artifactId>moo-core</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codiform</groupId>
-            <artifactId>moo-mvel</artifactId>
-            <version>2.0</version>
-        </dependency>
-
-        <!-- OMapper -->
-        <dependency>
-            <groupId>org.omapper</groupId>
-            <artifactId>omapper</artifactId>
-            <version>2.0</version>
-            <scope>system</scope>
-            <systemPath>/Users/jschwalb/Downloads/OMapper 2.0 Final.jar</systemPath>
+            <version>0.7.2</version>
         </dependency>
 
         <!-- ORIKA -->
