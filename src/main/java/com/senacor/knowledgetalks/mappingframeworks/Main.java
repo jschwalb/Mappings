@@ -12,30 +12,9 @@ import com.senacor.knowledgetalks.mappingframeworks.performance.SingleTester;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by jschwalb on 25.04.14.
- */
 public class Main {
 
-    public static void main2(String[] args) {
-        Novel novel = new Novel();
-        novel.setTitle("Ulf im Walde");
-
-        Novel novel2 = new Novel();
-        novel2.setTitle("Ulf im Walde");
-
-        NonFictionBook nfb = new NonFictionBook();
-        nfb.setTitle("Ulf im Walde");
-
-        System.out.println(novel.equals(novel2));
-        System.out.println(novel.equals(nfb));
-    }
-
-
     public static void main(String[] args) {
-
-
-
         long startTimeGen = System.nanoTime();
         List<Mapper>  mapper = new LinkedList<Mapper>();
         mapper.add(new HandwrittenMapper());
